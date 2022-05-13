@@ -330,3 +330,10 @@ select sysdate,
        to_char(sysdate, 'MI'),
        to_char(sysdate, 'SS')
 from dual;
+
+--NVL(컬럼명, null일때값)/NVL2(컬럼명, null아닐때값, null일때 값)
+select first_name,
+       commission_pct,
+       nvl(commission_pct, 0),
+       nvl2(commission_pct, 100, 0)
+from employees;
