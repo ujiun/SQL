@@ -83,7 +83,10 @@ order by avg(salary)-min(salary) desc;
 업무(JOBS)별로 최고임금과 최저임금의 차이를 출력해보세요.
 차이를 확인할 수 있도록 내림차순으로 정렬하세요? 
 */
-
+SELECT  job_id,
+        max_salary - min_salary
+from jobs
+order by max_salary - min_salary desc;
 
 
 /*
