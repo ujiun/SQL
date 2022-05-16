@@ -5,7 +5,7 @@ selsect 문
     where 절
     order by 절
 ********************/
-
+ 
 --모든 컬럼 조회하기
 select *
 from employees;
