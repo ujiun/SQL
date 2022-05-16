@@ -113,7 +113,14 @@ job_history 테이블은 과거의 담당업무의 데이터를 가지고 있다
 과거의 업무아이디(job_id)가 ‘AC_ACCOUNT’로 근무한 사원의 사번, 이름(풀네임), 업무아이디, 시작일, 종료일을 출력하세요.
 이름은 first_name과 last_name을 합쳐 출력합니다.
 (2건)
-
+select  em.employee_id,
+        em.first_name || ' ' || em.last_name,
+        jo.job_id,
+        jo.start_date,
+        jo.end_date             
+from employees em, job_history jo
+where em.employee_id = jo.employee_id
+and jo.job_id = 'AC_ACCOUNT';
 
 
 
@@ -122,7 +129,17 @@ job_history 테이블은 과거의 담당업무의 데이터를 가지고 있다
 각 부서(department)에 대해서 부서번호(department_id), 부서이름(department_name), 
 매니저(manager)의 이름(first_name), 위치(locations)한 도시(city), 나라(countries)의 이름(countries_name) 그리고 지역구분(regions)의 이름(resion_name)까지 전부 출력해 보세요.
 (11건)
-
+select  de.department_id,
+        de.department_name,
+        em.first_name,
+        lo.city,
+        co.country_name,
+        re.region_name
+from employees em, departments de, locations lo, countries co, regions re
+where em.employee_id = de.manager_id
+and de.location_id = lo.location_id
+and lo.country_id = co.country_id
+and co.region_id = re.region_id;
 
 
 
