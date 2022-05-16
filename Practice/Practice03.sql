@@ -86,7 +86,14 @@ order by region_name asc,
 자신의 매니저보다 채용일(hire_date)이 빠른 사원의 
 사번(employee_id), 이름(first_name)과 채용일(hire_date), 매니저이름(first_name), 매니저입사일(hire_date)을 조회하세요.
 (37건)
-
+select  e.employee_id,
+        e.first_name,
+        e.hire_date,
+        m.first_name,
+        m.hire_date
+from employees e, employees m
+where e.manager_id = m.employee_id 
+and e.hire_date < m.hire_date;
 
 
 
