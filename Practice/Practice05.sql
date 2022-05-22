@@ -88,7 +88,27 @@ and e.department_id = d.department_id(+);
 2005년 이후 입사한 직원중에 입사일이 11번째에서 20번째의 직원의 
 사번, 이름, 부서명, 급여, 입사일을 입사일 순서로 출력하세요
 */
-
+select rn,
+       employee_id,
+       first_name,
+       salary,
+       hire_date
+from (select  rownum rn,
+              employee_id,
+              first_name,
+              salary,
+              hire_date
+      from (select  employee_id,
+                    first_name,
+                    salary,
+                    hire_date
+            from employees e, departments d
+            where e.department_id = d.department_id 
+            and hire_date >= '05/01/01'
+            order by hire_date asc)
+     )
+where rn >= 11
+and rn <=20;
 
 
 /*
