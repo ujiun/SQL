@@ -89,17 +89,20 @@ and e.department_id = d.department_id(+);
 사번, 이름, 부서명, 급여, 입사일을 입사일 순서로 출력하세요
 */
 select rn,
-       employee_id,
-       first_name,
-       salary,
-       hire_date
+       employee_id "사번",
+       first_name "이름",
+       department_name "부서명",
+       salary "급여",
+       hire_date "입사일"
 from (select  rownum rn,
               employee_id,
               first_name,
+              department_name,
               salary,
               hire_date
       from (select  employee_id,
                     first_name,
+                    department_name,
                     salary,
                     hire_date
             from employees e, departments d
